@@ -1,3 +1,4 @@
+import 'package:fit_raho/provider/user_repository_provider/user_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:equatable/equatable.dart';
 import 'package:user_repository/user_repository.dart';
@@ -30,7 +31,3 @@ class SignInNotifier extends StateNotifier<SignInState> {
     state = SignInInitial();
   }
 }
-
-final userRepositoryProvider = Provider<UserRepository>((ref) {
-  return FirebaseUserRepo();
-});

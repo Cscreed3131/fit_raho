@@ -1,17 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_raho/provider/authentication/auth_provider.dart';
 
 import 'package:fit_raho/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'src/auth/screens/login_screen.dart';
 import 'src/home/screens/home_screen.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class MyAppView extends ConsumerWidget {
+  const MyAppView({super.key});
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(authenticationProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Raho',
@@ -41,20 +42,26 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator.adaptive();
-          }
-          if (snapshot.hasData) {
-            return const HomeScreen();
-          } else {
-            return const LoginScreen();
-          }
-        },
-      ),
+      home: state.status == AuthenticationStatus.unknown
+          ? const Center(child: CircularProgressIndicator.adaptive())
+          : state.status == AuthenticationStatus.authenticated
+              ? const HomeScreen()
+              : const LoginScreen(),
       routes: routes,
     );
   }
 }
+
+// home: StreamBuilder(
+//   stream: FirebaseAuth.instance.authStateChanges(),
+//   builder: (context, snapshot) {
+//     if (snapshot.connectionState == ConnectionState.waiting) {
+//       return const CircularProgressIndicator.adaptive();
+//     }
+//     if (snapshot.hasData) {
+//       return const HomeScreen();
+//     } else {
+//       return const LoginScreen();
+//     }
+//   },
+// ),
