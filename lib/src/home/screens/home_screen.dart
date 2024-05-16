@@ -38,20 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Welcome',
-                style: TextStyle(fontSize: 20),
-              ),
-              Text(
-                'Anubhav Kumar', // this should be dynamic. Data should be fetched from the server.
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary),
-              ),
-            ],
+          title: Text(
+            'Fit Raho',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+                color: Theme.of(context).colorScheme.primary),
           ),
           actions: const [
             // Padding(

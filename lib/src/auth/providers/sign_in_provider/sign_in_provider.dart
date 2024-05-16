@@ -9,6 +9,7 @@ part 'sign_in_state.dart';
 final signInProvider =
     StateNotifierProvider<SignInNotifier, SignInState>((ref) {
   final userRepository = ref.watch(userRepositoryProvider);
+
   return SignInNotifier(userRepository);
 });
 
