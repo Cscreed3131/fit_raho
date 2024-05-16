@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:fit_raho/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurple,
           primary: Colors.deepPurple.shade700,
           onPrimary: Colors.white,
-          secondary: Colors.deepPurple.shade500,
+          secondary: Colors.deepPurple.shade400,
           background: Colors.grey.shade200,
           onBackground: Colors.black,
         ),
