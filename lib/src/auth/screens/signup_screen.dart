@@ -9,6 +9,7 @@ import '../providers/sign_up_provider/sign_up_provider.dart';
 
 class SignupScreen extends ConsumerStatefulWidget {
   const SignupScreen({super.key});
+
   static const routeName = '/signup';
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SignupScreenState();
@@ -45,7 +46,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     final signUp = ref.watch(signUpProvider.notifier);
-
+    final String userType =
+        ModalRoute.of(context)!.settings.arguments as String;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SingleChildScrollView(
@@ -77,7 +79,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   top: screenHeight * 0.025,
                 ),
                 child: Text(
-                  'Sign-up as Member',
+                  'Sign-up as $userType',
                   style: TextStyle(
                     height: screenHeight * 0.001,
                     fontSize: 30,
@@ -317,9 +319,11 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                       myUser.dateOfBirth =
                                           _dateOfBirthController.text;
                                       myUser.gender = _genderController.text;
-                                      myUser.role = 'member';
+                                      myUser.role = userType;
                                       signUp.submit(
-                                          myUser, _passwordController.text);
+                                        myUser,
+                                        _passwordController.text,
+                                      );
                                     }
                                   },
                                   child: const Text(

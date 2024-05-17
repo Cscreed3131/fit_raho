@@ -1,5 +1,5 @@
-import 'package:fit_raho/src/home/screens/profile.dart';
-import 'package:fit_raho/src/home/screens/routine.dart';
+import 'package:fit_raho/src/home/screens/members_home_screens/profile.dart';
+import 'package:fit_raho/src/home/screens/members_home_screens/routine.dart';
 import 'package:fit_raho/src/home/widgets/profile_icon_widget.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -46,22 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Theme.of(context).colorScheme.primary),
           ),
           actions: const [
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            //   child: Column(
-            //     children: [
-            //       Text(
-            //         'Monday',
-            //         style: TextStyle(
-            //           fontWeight: FontWeight.bold,
-            //           fontSize: 20,
-            //           color: Theme.of(context).colorScheme.primary,
-            //         ),
-            //       ),
-            //       const Text('08-01-2002'),
-            //     ],
-            //   ),
-            // )
             ProfileDialogBox(),
           ]),
       // drawer: const Drawer(),

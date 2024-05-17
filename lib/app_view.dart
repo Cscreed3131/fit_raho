@@ -1,11 +1,12 @@
 import 'package:fit_raho/provider/authentication/auth_provider.dart';
 
 import 'package:fit_raho/routes.dart';
+import 'package:fit_raho/src/home/screens/trainer_home_screens/trainer_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'src/auth/screens/login_screen.dart';
-import 'src/home/screens/home_screen.dart';
+import 'src/home/screens/members_home_screens/home_screen.dart';
 
 class MyAppView extends ConsumerWidget {
   const MyAppView({super.key});
@@ -45,23 +46,9 @@ class MyAppView extends ConsumerWidget {
       home: state.status == AuthenticationStatus.unknown
           ? const Center(child: CircularProgressIndicator.adaptive())
           : state.status == AuthenticationStatus.authenticated
-              ? const HomeScreen()
+              ? const TrainerHomeScreen()
               : const LoginScreen(),
       routes: routes,
     );
   }
 }
-
-// home: StreamBuilder(
-//   stream: FirebaseAuth.instance.authStateChanges(),
-//   builder: (context, snapshot) {
-//     if (snapshot.connectionState == ConnectionState.waiting) {
-//       return const CircularProgressIndicator.adaptive();
-//     }
-//     if (snapshot.hasData) {
-//       return const HomeScreen();
-//     } else {
-//       return const LoginScreen();
-//     }
-//   },
-// ),
