@@ -1,4 +1,5 @@
 import 'package:fit_raho/src/auth/providers/sign_in_provider/sign_in_provider.dart';
+import 'package:fit_raho/src/home/screens/trainer_home_screens/trainer_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -71,7 +72,10 @@ class _ProfileDialogBoxState extends ConsumerState<ProfileDialogBox> {
                     title: const Text('Order history'),
                   ),
                   ListTile(
-                    onTap: () => {},
+                    onTap: () => {
+                      Navigator.of(context)
+                          .pushNamed(TrainerProfileScreen.routeName),
+                    },
                     leading: const Icon(Icons.person_2_outlined),
                     title: const Text('Profile'),
                   ),
