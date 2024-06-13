@@ -1,3 +1,4 @@
+import 'package:fit_raho/src/admin/screens/admin_screen.dart';
 import 'package:fit_raho/src/auth/providers/sign_in_provider/sign_in_provider.dart';
 import 'package:fit_raho/src/home/screens/trainer_home_screens/trainer_profile.dart';
 import 'package:flutter/material.dart';
@@ -57,8 +58,7 @@ class _ProfileDialogBoxState extends ConsumerState<ProfileDialogBox> {
                   // if (userRole.contains('administrator'))
                   ListTile(
                     onTap: () => {
-                      // Navigator.of(context)
-                      //     .popAndPushNamed(AdminHomeScreen.routeName),
+                      Navigator.of(context).pushNamed(AdminScreen.routeName),
                     },
                     leading: const Icon(Icons.admin_panel_settings_outlined),
                     title: const Text('Adminstrator'),
