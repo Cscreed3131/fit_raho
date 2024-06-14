@@ -1,7 +1,7 @@
 import 'package:trainer_repository/trainer_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
-abstract class FirebaseAdminRepo {
+abstract class AdminRepo {
   Future<List<MyUser?>> getUsers();
 
   Future<List<Trainer>> getTrainers();

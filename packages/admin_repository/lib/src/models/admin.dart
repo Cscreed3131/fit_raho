@@ -1,4 +1,4 @@
-import 'package:admin_repository/src/entities/entities.dart';
+import '../entities/entities.dart';
 
 class Admin {
   final String adminId;
@@ -12,6 +12,13 @@ class Admin {
     required this.email,
     required this.gymName,
   });
+
+  static final empty = Admin(
+    adminId: '',
+    name: '',
+    email: '',
+    gymName: '',
+  );
 
   AdminEntity toEntity() {
     return AdminEntity(

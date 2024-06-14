@@ -1,33 +1,87 @@
-import 'package:admin_repository/admin_repository.dart';
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:trainer_repository/trainer_repository.dart';
+import 'package:user_repository/user_repository.dart';
 
-class FirebaseAdminRepo {
-  final FirebaseFirestore _firestore;
-  final FirebaseStorage _storage;
+import '../admin_repository.dart';
 
-  FirebaseAdminRepo(this._firestore, this._storage);
+class FirebaseAdminRepo implements AdminRepo {
+  final FirebaseAuth _firebaseAuth;
+  final ownerCollection = FirebaseFirestore.instance.collection('owners');
+  final trainerCollection = FirebaseFirestore.instance.collection('trainers');
+  final userCollection = FirebaseFirestore.instance.collection('users');
+  FirebaseAdminRepo({
+    FirebaseAuth? firebaseAuth,
+  }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
-  Future<void> addAdmin(Admin admin) async {
-    // await _firestore.collection('admins').doc().set(admin.());
+  @override
+  Stream<Admin?> get owner {
+    return _firebaseAuth.authStateChanges().asyncMap((firebaseUser) async {
+      if (firebaseUser == null) {
+        return Admin.empty;
+      } else {
+        final doc = await ownerCollection.doc(firebaseUser.uid).get();
+        return Admin.fromEntity(AdminEntity.fromDocument(doc.data()!));
+      }
+    });
   }
 
-  // Future<void> deleteAdmin(String id) async {
-  //   await _firestore.collection('admins').doc(id).delete();
-  // }
+  @override
+  Future<void> addTrainer(Trainer trainer) async {
+    try {
+      final firebaseTrainerRepo = FirebaseTrainerRepo();
+      await firebaseTrainerRepo.setTrainerData(trainer);
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
 
-  // Future<List<Admin>> getAdmins() async {
-  //   final snapshot = await _firestore.collection('admins').get();
-  //   return snapshot.docs.map((doc) => Admin.fromJson(doc.data())).toList();
-  // }
+  @override
+  Future<void> deleteTrainer(Trainer trainer) async {
+    try {
+      await trainerCollection.doc(trainer.trainerId).delete();
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
 
-  // Future<void> updateAdmin(Admin admin) async {
-  //   await _firestore.collection('admins').doc(admin.id).update(admin.toJson());
-  // }
+  @override
+  Future<List<Trainer>> getTrainers() async {
+    try {
+      return await trainerCollection.get().then((value) => value.docs
+          .map((e) => Trainer.fromEntity(TrainerEntity.fromDocument(e.data())))
+          .toList());
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
 
-  // Future<void> uploadImage(String id, File image) async {
-  //   final ref = _storage.ref().child('admins').child(id);
-  //   await ref.putFile(image);
-  // }
+  @override
+  Future<List<MyUser>> getUsers() async {
+    try {
+      return await userCollection.get().then((value) => value.docs
+          .map((e) => MyUser.formEntity(MyUserEntity.fromDocument(e.data())))
+          .toList());
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> updateTrainer(Trainer trainer) async {
+    try {
+      await trainerCollection
+          .doc(trainer.trainerId)
+          .update(trainer.toEntity().toDocument());
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
 }
-
-class FirebaseStorage {}

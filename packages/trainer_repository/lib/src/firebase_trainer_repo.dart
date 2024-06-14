@@ -8,7 +8,7 @@ import 'package:trainer_repository/src/trainer_repo.dart';
 
 class FirebaseTrainerRepo implements TrainerRepository {
   final FirebaseAuth _firebaseAuth;
-  final userCollection = FirebaseFirestore.instance.collection('trainer');
+  final trainerCollection = FirebaseFirestore.instance.collection('trainer');
   FirebaseTrainerRepo({
     FirebaseAuth? firebaseAuth,
   }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
@@ -19,7 +19,7 @@ class FirebaseTrainerRepo implements TrainerRepository {
       if (firebaseUser == null) {
         return Trainer.empty;
       } else {
-        final doc = await userCollection.doc(firebaseUser.uid).get();
+        final doc = await trainerCollection.doc(firebaseUser.uid).get();
         return Trainer.fromEntity(TrainerEntity.fromDocument(doc.data()!));
       }
     });
@@ -57,7 +57,7 @@ class FirebaseTrainerRepo implements TrainerRepository {
   @override
   Future<void> setTrainerData(Trainer myTrainer) async {
     try {
-      await userCollection
+      await trainerCollection
           .doc(myTrainer.trainerId)
           .set(myTrainer.toEntity().toDocument());
     } catch (e) {
