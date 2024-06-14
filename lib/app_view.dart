@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'src/auth/screens/login_screen.dart';
-import 'src/home/screens/members_home_screens/home_screen.dart';
 
 class MyAppView extends ConsumerWidget {
   const MyAppView({super.key});
