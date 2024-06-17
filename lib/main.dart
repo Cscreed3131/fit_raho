@@ -1,6 +1,6 @@
 // core
+import 'package:fit_raho/routes.dart';
 import 'package:fit_raho/src/auth/screens/signin_screen.dart';
-import 'package:fit_raho/src/auth/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -91,6 +91,7 @@ class MyApp extends ConsumerWidget {
       //   },
       // ),
       home: const LoginScreen(),
+      routes: routes,
       debugShowCheckedModeBanner: false,
       // routes: routes,
     );

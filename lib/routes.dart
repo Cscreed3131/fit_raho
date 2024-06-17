@@ -1,15 +1,14 @@
-// import 'package:fit_raho/src/admin/screens/add_trainers/add_trainers.dart';
-// import 'package:fit_raho/src/admin/screens/admin_screen.dart';
-// import 'package:fit_raho/src/admin/screens/available_trainers/manage_trainers.dart';
-// import 'package:fit_raho/src/admin/screens/available_trainers/trainer_details.dart';
+import 'package:fit_raho/src/auth/screens/owner_signup_screen.dart';
+import 'package:fit_raho/src/auth/screens/trainer_signup_screen.dart';
 
-// import 'src/auth/screens/login_screen.dart';
-// import 'src/auth/screens/signup_screen.dart';
-// import 'src/home/screens/members_home_screens/home_screen.dart';
+import 'src/auth/screens/signin_screen.dart';
+import 'src/auth/screens/client_signup_screen.dart';
 
-// final routes = {
-//   // SignupScreen.routeName: (ctx) => const SignupScreen(),
-//   // LoginScreen.routeName: (ctx) => const LoginScreen(),
+final routes = {
+  LoginScreen.routeName: (ctx) => const LoginScreen(),
+  ClientSignUpScreen.routeName: (ctx) => const ClientSignUpScreen(),
+  TrainerSignUpScreen.routeName: (ctx) => const TrainerSignUpScreen(),
+  OwnerSignUpScreen.routeName: (ctx) => const OwnerSignUpScreen(),
 //   // HomeScreen.routeName: (ctx) => const HomeScreen(),
 //   // TrainerHomeScreen.routeName: (ctx) => const TrainerHomeScreen(),
 //   // TrainerProfileScreen.routeName: (ctx) => const TrainerProfileScreen(),
@@ -17,4 +16,4 @@
 //   ManageTrainerScreen.routeName: (ctx) => const ManageTrainerScreen(),
 //   TrainerDetailsScreen.routeName: (ctx) => const TrainerDetailsScreen(),
 //   AddTrainers.routeName: (ctx) => const AddTrainers(),
-// };
+};

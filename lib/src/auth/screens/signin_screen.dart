@@ -1,6 +1,8 @@
 // core
 import 'package:fit_raho/src/auth/provider/signin_provider.dart';
-import 'package:fit_raho/src/auth/screens/signup_screen.dart';
+import 'package:fit_raho/src/auth/screens/client_signup_screen.dart';
+import 'package:fit_raho/src/auth/screens/owner_signup_screen.dart';
+import 'package:fit_raho/src/auth/screens/trainer_signup_screen.dart';
 import 'package:flutter/material.dart';
 
 // firebase
@@ -221,10 +223,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                                     // Handle Member option
                                                     Navigator.of(context)
                                                         .popAndPushNamed(
-                                                            SignupScreen
-                                                                .routeName,
-                                                            arguments:
-                                                                'Member');
+                                                      ClientSignUpScreen
+                                                          .routeName,
+                                                    );
                                                   },
                                                   child: const Text('Member'),
                                                 ),
@@ -233,17 +234,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                                     // Handle Trainer option
                                                     Navigator.of(context)
                                                         .popAndPushNamed(
-                                                            SignupScreen
-                                                                .routeName,
-                                                            arguments:
-                                                                'Trainer');
+                                                      TrainerSignUpScreen
+                                                          .routeName,
+                                                    );
                                                   },
                                                   child: const Text('Trainer'),
                                                 ),
                                                 ElevatedButton(
                                                   onPressed: () {
-                                                    // Handle Owner option
-                                                    Navigator.of(context).pop();
+                                                    // Handle Trainer option
+                                                    Navigator.of(context)
+                                                        .popAndPushNamed(
+                                                      OwnerSignUpScreen
+                                                          .routeName,
+                                                    );
                                                   },
                                                   child: const Text('Owner'),
                                                 ),
