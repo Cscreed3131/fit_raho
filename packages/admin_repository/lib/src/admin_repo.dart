@@ -10,7 +10,7 @@ abstract class AdminRepo {
 
   Future<List<Trainer>> getTrainers();
 
-  Future<void> addTrainer(Trainer trainer);
+  Future<void> addTrainer(Trainer trainer, String password);
 
   Future<void> deleteTrainer(Trainer trainer);
 

@@ -29,10 +29,11 @@ class FirebaseAdminRepo implements AdminRepo {
   }
 
   @override
-  Future<void> addTrainer(Trainer trainer) async {
+  Future<void> addTrainer(Trainer trainer, String password) async {
     try {
       final firebaseTrainerRepo = FirebaseTrainerRepo();
-      await firebaseTrainerRepo.setTrainerData(trainer);
+      final newTrainer = await firebaseTrainerRepo.signUp(trainer, password);
+      await firebaseTrainerRepo.setTrainerData(newTrainer);
     } catch (e) {
       log(e.toString());
       rethrow;

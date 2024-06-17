@@ -32,8 +32,12 @@ dependencies:
   cupertino_icons: ^1.0.6
   font_awesome_flutter: ^10.7.0
 
-  user_repository:
-    path: packages/user_repository
+  # user_repository:
+  #   path: packages/user_repository
+  # trainer_repository:
+  #   path: packages/trainer_repository
+  # admin_repository:
+  #   path: packages/admin_repository
 
 
 dev_dependencies:

@@ -6,7 +6,7 @@ import 'package:trainer_repository/src/entities/entities.dart';
 import 'package:trainer_repository/src/models/models.dart';
 import 'package:trainer_repository/src/trainer_repo.dart';
 
-class FirebaseTrainerRepo implements TrainerRepository {
+class FirebaseTrainerRepo implements TrainerRepo {
   final FirebaseAuth _firebaseAuth;
   final trainerCollection = FirebaseFirestore.instance.collection('trainer');
   FirebaseTrainerRepo({
