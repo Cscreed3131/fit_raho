@@ -10,6 +10,7 @@ class TrainerEntity {
   String endOfcontract;
   String workingHours;
   String imageUrl;
+  String role;
 
   TrainerEntity({
     required this.trainerId,
@@ -23,6 +24,7 @@ class TrainerEntity {
     required this.endOfcontract,
     required this.workingHours,
     required this.imageUrl,
+    required this.role,
   });
   Map<String, Object?> toDocument() {
     return {
@@ -37,21 +39,24 @@ class TrainerEntity {
       'endOfContract': endOfcontract,
       'workingHours': workingHours,
       'imageUrl': imageUrl,
+      'role': role,
     };
   }
 
   static TrainerEntity fromDocument(Map<String, dynamic> doc) {
     return TrainerEntity(
-        trainerId: doc['trainerId'],
-        name: doc['name'],
-        phoneNumber: doc['phoneNumber'],
-        gender: doc['gender'],
-        dateOfBirth: doc['dateOfBirth'],
-        email: doc['email'],
-        experience: doc['experience'],
-        dateOfJoining: doc['dateOfJoining'],
-        endOfcontract: doc['endOfcontract'],
-        workingHours: doc['workingHours'],
-        imageUrl: doc['imageUrl']);
+      trainerId: doc['trainerId'],
+      name: doc['name'],
+      phoneNumber: doc['phoneNumber'],
+      gender: doc['gender'],
+      dateOfBirth: doc['dateOfBirth'],
+      email: doc['email'],
+      experience: doc['experience'],
+      dateOfJoining: doc['dateOfJoining'],
+      endOfcontract: doc['endOfcontract'],
+      workingHours: doc['workingHours'],
+      imageUrl: doc['imageUrl'],
+      role: doc['role'],
+    );
   }
 }

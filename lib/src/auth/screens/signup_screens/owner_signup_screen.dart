@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:fit_raho/components/my_text_field.dart';
 import 'package:fit_raho/models/owner/owner_model.dart';
-import 'package:fit_raho/src/auth/provider/owner_signup_provider.dart';
+import 'package:fit_raho/src/auth/provider/signup_providers/owner_signup_provider.dart';
 import 'package:fit_raho/widgets/userImagePicker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -231,6 +231,7 @@ class _OwnerSignUpScreenState extends ConsumerState<OwnerSignUpScreen> {
                                       owner.email = _emailController.text;
                                       owner.gymName = _gymNameController.text;
                                       owner.name = _nameController.text;
+                                      owner.role = 'owner';
                                       signUp.submit(
                                           owner,
                                           _confirmPasswordController.text,

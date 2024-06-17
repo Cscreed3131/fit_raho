@@ -1,35 +1,31 @@
 import 'dart:io';
 
 import 'package:fit_raho/components/my_text_field.dart';
-import 'package:fit_raho/models/trainer/trainer.dart';
-import 'package:fit_raho/src/auth/provider/trainer_signup_provider.dart';
+import 'package:fit_raho/models/client/client_model.dart';
+import 'package:fit_raho/src/auth/provider/signup_providers/client_signup_provider.dart';
 import 'package:fit_raho/widgets/userImagePicker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class TrainerSignUpScreen extends ConsumerStatefulWidget {
-  const TrainerSignUpScreen({super.key});
+class ClientSignUpScreen extends ConsumerStatefulWidget {
+  const ClientSignUpScreen({super.key});
 
-  static const routeName = '/trainer-signup';
+  static const routeName = '/signup';
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _TrainerSignUpScreenState();
+      _ClientSignUpScreenState();
 }
 
-class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
+class _ClientSignUpScreenState extends ConsumerState<ClientSignUpScreen> {
   final _key = GlobalKey<FormState>();
 
   final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _genderController = TextEditingController();
   final _dateOfBirthController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _experienceController = TextEditingController();
-  final _dateOfJoiningController = TextEditingController();
-  final _endOfContractController = TextEditingController();
-  final _workingHoursController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
@@ -38,18 +34,15 @@ class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
   bool signInRequired = false;
   IconData iconPassword = CupertinoIcons.eye_fill;
   bool obscurePassword = true;
+  // String? _errorMsg;
 
   @override
   void dispose() {
     _nameController.dispose();
+    _emailController.dispose();
     _phoneNumberController.dispose();
     _genderController.dispose();
     _dateOfBirthController.dispose();
-    _emailController.dispose();
-    _experienceController.dispose();
-    _dateOfJoiningController.dispose();
-    _endOfContractController.dispose();
-    _workingHoursController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
@@ -57,7 +50,9 @@ class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final signUp = ref.watch(trainerSignUpProvider);
+    final signUp = ref.watch(clientSignUpProvider);
+    // final String userType =
+    //     ModalRoute.of(context)!.settings.arguments as String;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SingleChildScrollView(
@@ -85,14 +80,16 @@ class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
               ),
               Padding(
                 padding: EdgeInsets.only(
+                  // bottom: screenHeight * 0.025,
                   top: screenHeight * 0.025,
                 ),
                 child: Text(
-                  'Sign-up as Trainer',
+                  'Sign-up as client',
                   style: TextStyle(
                     height: screenHeight * 0.001,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
+                    // fontFamily: 'IBMPlexMono',
                     color:
                         Theme.of(context).colorScheme.primary.withOpacity(0.75),
                   ),
@@ -101,6 +98,7 @@ class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
               Padding(
                 padding: const EdgeInsets.all(25),
                 child: Card(
+                  // width: double.infinity,
                   child: Form(
                     key: _key,
                     child: Padding(
@@ -216,6 +214,7 @@ class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
                                     });
                                   },
                                   child: AbsorbPointer(
+                                    // nice widget disables the pointer on text field
                                     child: MyTextField(
                                       controller: _dateOfBirthController,
                                       hintText: 'Date of Birth',
@@ -254,110 +253,6 @@ class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
                                 }
                                 return null;
                               }),
-                          const SizedBox(
-                            height: 7,
-                          ),
-                          MyTextField(
-                            controller: _experienceController,
-                            hintText: 'Experience (years)',
-                            obscureText: false,
-                            keyboardType: TextInputType.number,
-                            prefixIcon: const Icon(Icons.work_outline),
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return 'Experience can\'t be empty';
-                              } else if (!RegExp(r'^[0-9]+$').hasMatch(val)) {
-                                return 'Enter a valid number';
-                              }
-                              return null;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 7,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(1900),
-                                lastDate: DateTime.now(),
-                              ).then((selectedDate) {
-                                if (selectedDate != null) {
-                                  final formattedDate = DateFormat('dd/MM/yyyy')
-                                      .format(selectedDate);
-                                  _dateOfJoiningController.text = formattedDate;
-                                }
-                              });
-                            },
-                            child: AbsorbPointer(
-                              child: MyTextField(
-                                controller: _dateOfJoiningController,
-                                hintText: 'Date of Joining',
-                                keyboardType: TextInputType.none,
-                                obscureText: false,
-                                prefixIcon:
-                                    const Icon(Icons.calendar_today_outlined),
-                                validator: (val) {
-                                  if (val!.isEmpty) {
-                                    return 'Date of joining can\'t be empty';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 7,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(1900),
-                                lastDate: DateTime.now(),
-                              ).then((selectedDate) {
-                                if (selectedDate != null) {
-                                  final formattedDate = DateFormat('dd/MM/yyyy')
-                                      .format(selectedDate);
-                                  _endOfContractController.text = formattedDate;
-                                }
-                              });
-                            },
-                            child: AbsorbPointer(
-                              child: MyTextField(
-                                controller: _endOfContractController,
-                                hintText: 'End of Contract',
-                                keyboardType: TextInputType.none,
-                                obscureText: false,
-                                prefixIcon:
-                                    const Icon(Icons.calendar_today_outlined),
-                                validator: (val) {
-                                  if (val!.isEmpty) {
-                                    return 'End of contract can\'t be empty';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 7,
-                          ),
-                          MyTextField(
-                            controller: _workingHoursController,
-                            hintText: 'Working Hours',
-                            obscureText: false,
-                            keyboardType: TextInputType.text,
-                            prefixIcon: const Icon(Icons.access_time_outlined),
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return 'Working hours can\'t be empty';
-                              }
-                              return null;
-                            },
-                          ),
                           const SizedBox(
                             height: 7,
                           ),
@@ -429,27 +324,17 @@ class _TrainerSignUpScreenState extends ConsumerState<TrainerSignUpScreen> {
                                   ),
                                   onPressed: () {
                                     if (_key.currentState!.validate()) {
-                                      Trainer trainer = Trainer.empty;
-
-                                      trainer.name = _nameController.text;
-                                      trainer.phoneNumber =
+                                      Client client = Client.empty;
+                                      client.email = _emailController.text;
+                                      client.name = _nameController.text;
+                                      client.phoneNumber =
                                           _phoneNumberController.text;
-                                      trainer.gender = _genderController.text;
-                                      trainer.dateOfBirth =
+                                      client.dateOfBirth =
                                           _dateOfBirthController.text;
-                                      trainer.email = _emailController.text;
-                                      trainer.experience =
-                                          _experienceController.text;
-                                      trainer.dateOfJoining =
-                                          _dateOfJoiningController.text;
-                                      trainer.endOfcontract =
-                                          _endOfContractController.text;
-                                      trainer.workingHours =
-                                          _workingHoursController.text;
-                                      trainer.imageUrl = _selectedImage!.path;
-
+                                      client.gender = _genderController.text;
+                                      client.role = 'client';
                                       signUp.submit(
-                                          trainer,
+                                          client,
                                           _confirmPasswordController.text,
                                           _selectedImage!);
                                     }

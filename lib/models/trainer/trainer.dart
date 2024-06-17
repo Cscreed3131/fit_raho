@@ -12,6 +12,7 @@ class Trainer {
   String endOfcontract;
   String workingHours;
   String imageUrl;
+  String role;
 
   Trainer({
     required this.trainerId,
@@ -25,6 +26,7 @@ class Trainer {
     required this.endOfcontract,
     required this.workingHours,
     required this.imageUrl,
+    required this.role,
   });
 
   static final empty = Trainer(
@@ -39,6 +41,7 @@ class Trainer {
     endOfcontract: '',
     workingHours: '',
     imageUrl: '',
+    role: '',
   );
   TrainerEntity toEntity() {
     return TrainerEntity(
@@ -53,6 +56,7 @@ class Trainer {
       endOfcontract: endOfcontract,
       workingHours: workingHours,
       imageUrl: imageUrl,
+      role: role,
     );
   }
 
@@ -69,11 +73,12 @@ class Trainer {
       endOfcontract: entity.endOfcontract,
       workingHours: entity.workingHours,
       imageUrl: entity.imageUrl,
+      role: entity.role,
     );
   }
 
   @override
   String toString() {
-    return 'Trainer: $trainerId,$name,$phoneNumber,$gender,$dateOfBirth,$email,$experience,$dateOfJoining,$endOfcontract,$workingHours,$imageUrl,';
+    return 'Trainer: $trainerId,$name,$phoneNumber,$gender,$dateOfBirth,$email,$experience,$dateOfJoining,$endOfcontract,$workingHours,$imageUrl,$role';
   }
 }

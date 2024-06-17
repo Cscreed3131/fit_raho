@@ -1,8 +1,8 @@
-import 'package:fit_raho/src/auth/screens/owner_signup_screen.dart';
-import 'package:fit_raho/src/auth/screens/trainer_signup_screen.dart';
+import 'package:fit_raho/src/auth/screens/signup_screens/owner_signup_screen.dart';
+import 'package:fit_raho/src/auth/screens/signup_screens/trainer_signup_screen.dart';
 
 import 'src/auth/screens/signin_screen.dart';
-import 'src/auth/screens/client_signup_screen.dart';
+import 'src/auth/screens/signup_screens/client_signup_screen.dart';
 
 final routes = {
   LoginScreen.routeName: (ctx) => const LoginScreen(),

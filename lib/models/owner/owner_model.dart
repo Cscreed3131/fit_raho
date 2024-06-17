@@ -6,6 +6,7 @@ class Owner {
   String email;
   String gymName;
   String imageUrl;
+  String role;
 
   Owner({
     required this.ownerId,
@@ -13,6 +14,7 @@ class Owner {
     required this.email,
     required this.gymName,
     required this.imageUrl,
+    required this.role,
   });
 
   static final empty = Owner(
@@ -21,6 +23,7 @@ class Owner {
     email: '',
     gymName: '',
     imageUrl: '',
+    role: '',
   );
 
   OwnerEntity toEntity() {
@@ -30,6 +33,7 @@ class Owner {
       email: email,
       gymName: gymName,
       imageUrl: imageUrl,
+      role: role,
     );
   }
 
@@ -40,6 +44,7 @@ class Owner {
       email: entity.email,
       gymName: entity.gymName,
       imageUrl: entity.imageUrl,
+      role: entity.role,
     );
   }
 }
