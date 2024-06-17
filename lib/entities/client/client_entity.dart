@@ -1,4 +1,4 @@
-class MyUserEntity {
+class ClientEntity {
   String userId;
   String name;
   String phoneNumber;
@@ -6,8 +6,9 @@ class MyUserEntity {
   String dateOfBirth;
   String email;
   String role;
+  String imageUrl;
 
-  MyUserEntity({
+  ClientEntity({
     required this.userId,
     required this.email,
     required this.name,
@@ -15,6 +16,7 @@ class MyUserEntity {
     required this.gender,
     required this.phoneNumber,
     required this.role,
+    required this.imageUrl,
   });
   Map<String, Object?> toDocument() {
     return {
@@ -25,11 +27,12 @@ class MyUserEntity {
       'gender': gender,
       'phoneNumber': phoneNumber,
       'role': role,
+      'imageUrl': imageUrl,
     };
   }
 
-  static MyUserEntity fromDocument(Map<String, dynamic> doc) {
-    return MyUserEntity(
+  static ClientEntity fromDocument(Map<String, dynamic> doc) {
+    return ClientEntity(
       userId: doc['userId'],
       email: doc['email'],
       name: doc['name'],
@@ -37,6 +40,7 @@ class MyUserEntity {
       gender: doc['gender'],
       phoneNumber: doc['phoneNumber'],
       role: doc['role'],
+      imageUrl: doc['imageUrl'],
     );
   }
 }

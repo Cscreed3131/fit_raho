@@ -1,6 +1,6 @@
 import 'package:fit_raho/entities/client/client_entity.dart';
 
-class MyUser {
+class Client {
   String userId;
   String name;
   String phoneNumber;
@@ -8,8 +8,9 @@ class MyUser {
   String dateOfBirth;
   String email;
   String role;
+  String imageUrl;
 
-  MyUser({
+  Client({
     required this.userId,
     required this.email,
     required this.name,
@@ -17,9 +18,10 @@ class MyUser {
     required this.gender,
     required this.phoneNumber,
     required this.role,
+    required this.imageUrl,
   });
 
-  static final empty = MyUser(
+  static final empty = Client(
     userId: '',
     email: '',
     name: '',
@@ -27,10 +29,11 @@ class MyUser {
     gender: '',
     phoneNumber: '',
     role: '',
+    imageUrl: '',
   );
 
-  MyUserEntity toEntity() {
-    return MyUserEntity(
+  ClientEntity toEntity() {
+    return ClientEntity(
       userId: userId,
       email: email,
       name: name,
@@ -38,11 +41,12 @@ class MyUser {
       gender: gender,
       dateOfBirth: dateOfBirth,
       role: role,
+      imageUrl: imageUrl,
     );
   }
 
-  static MyUser formEntity(MyUserEntity entity) {
-    return MyUser(
+  static Client formEntity(ClientEntity entity) {
+    return Client(
       userId: entity.userId,
       email: entity.email,
       name: entity.name,
@@ -50,11 +54,12 @@ class MyUser {
       gender: entity.gender,
       phoneNumber: entity.phoneNumber,
       role: entity.role,
+      imageUrl: entity.imageUrl,
     );
   }
 
   @override
   String toString() {
-    return 'MyUser: $userId, $email, $name, $dateOfBirth, $gender, $phoneNumber, $role,';
+    return 'Client: $userId, $email, $name, $dateOfBirth, $gender, $phoneNumber, $role, $imageUrl';
   }
 }
