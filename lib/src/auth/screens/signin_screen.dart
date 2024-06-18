@@ -35,16 +35,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     super.dispose();
   }
 
-  // void _signIn() async {
-  //   await FirebaseAuth.instance.signInWithEmailAndPassword(
-  //       email: _enteredEmailController.text,
-  //       password: _enteredpasswordContoller.text);
-  // }
-
   @override
   Widget build(BuildContext context) {
-    final signIn = ref.watch(clientSignInProvider);
-
+    final userSignIn = ref.watch(userSignInProvider);
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     final shortestSide = MediaQuery.of(context).size.shortestSide < 600;
@@ -178,7 +171,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                                 ),
                                               ),
                                               onPressed: () async {
-                                                signIn.submit(
+                                                userSignIn.submit(
                                                   _enteredEmailController.text,
                                                   _enteredpasswordContoller
                                                       .text,

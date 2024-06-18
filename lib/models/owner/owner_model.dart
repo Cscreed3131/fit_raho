@@ -47,4 +47,9 @@ class Owner {
       role: entity.role,
     );
   }
+
+  @override
+  String toString() {
+    return 'Owner(ownerId: $ownerId, name: $name, email: $email, gymName: $gymName, imageUrl: $imageUrl, role: $role)';
+  }
 }

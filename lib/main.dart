@@ -1,6 +1,8 @@
 // core
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_raho/routes.dart';
 import 'package:fit_raho/src/auth/screens/signin_screen.dart';
+import 'package:fit_raho/src/home/screens/client_screen/main_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,7 +16,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // name: 'fit-raho',
+    name: 'fit-raho',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   FirebaseFirestore.instance.settings = const Settings(
@@ -77,20 +79,16 @@ class MyApp extends ConsumerWidget {
         useMaterial3: true,
       ),
       // home:const LoginScreen(),
-      // home: StreamBuilder(
-      //   stream: FirebaseAuth.instance.authStateChanges(),
-      //   builder: (context, snapshot) {
-      //     // if (snapshot.connectionState == ConnectionState.waiting) {
-      //     //   return const LoadingSplashScreen();
-      //     // }
-      //     if (snapshot.hasData) {
-      //       // Get the user data
-      //       return const HomeScreen();
-      //     }
-      //     return const LoginScreen();
-      //   },
-      // ),
-      home: const LoginScreen(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // Get the user data
+            return const MainHomeScreen();
+          }
+          return const LoginScreen();
+        },
+      ),
       routes: routes,
       debugShowCheckedModeBanner: false,
       // routes: routes,
