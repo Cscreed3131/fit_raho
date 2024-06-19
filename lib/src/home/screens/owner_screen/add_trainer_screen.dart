@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_raho/widgets/user_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -12,10 +11,9 @@ class AddTrainers extends StatefulWidget {
   State<AddTrainers> createState() => _AddTrainersState();
 }
 
-// this page lets you add new trainers to the gym
+// this page lets you add existing trainers to the new gym.
 class _AddTrainersState extends State<AddTrainers> {
   final _formKey = GlobalKey<FormState>();
-  // also we something here for the name controller,
   final _nameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _genderController = TextEditingController();

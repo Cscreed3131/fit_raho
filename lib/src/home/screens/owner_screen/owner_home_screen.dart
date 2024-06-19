@@ -34,7 +34,7 @@ class OwnerHomeScreen extends StatelessWidget {
                   leading: const Icon(CupertinoIcons.person_2_alt),
                   onTap: () {
                     Navigator.of(context)
-                        .pushNamed(ManageTrainerScreen.routeName);
+                        .pushNamed(AvailableTrainerScreen.routeName);
                   },
                   minLeadingWidth: 50,
                   contentPadding:

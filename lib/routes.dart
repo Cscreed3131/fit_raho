@@ -17,7 +17,7 @@ final routes = {
   ClientHomeScreen.routeName: (ctx) => const ClientHomeScreen(),
   OwnerHomeScreen.routeName: (ctx) => const OwnerHomeScreen(),
   TrainerHomeScreen.routeName: (ctx) => const TrainerHomeScreen(),
-  ManageTrainerScreen.routeName: (ctx) => const ManageTrainerScreen(),
+  AvailableTrainerScreen.routeName: (ctx) => const AvailableTrainerScreen(),
   TrainerDetailsScreen.routeName: (ctx) => const TrainerDetailsScreen(),
   AddTrainers.routeName: (ctx) => const AddTrainers(),
 };

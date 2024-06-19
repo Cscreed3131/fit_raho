@@ -1,9 +1,10 @@
+import 'package:fit_raho/models/trainer/trainer.dart';
 import 'package:flutter/material.dart';
 
 class TrainerDetailsScreen extends StatefulWidget {
   const TrainerDetailsScreen({super.key});
-  static const routeName = 'trainer-details';
 
+  static const routeName = 'trainer-details';
   @override
   State<TrainerDetailsScreen> createState() => _TrainerDetailsScreenState();
 }
@@ -12,6 +13,7 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final data = ModalRoute.of(context)!.settings.arguments as Trainer;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -42,7 +44,7 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                     children: [
                       TextFormField(
                         // enabled: false,
-                        initialValue: 'Anubhav Kumar',
+                        initialValue: data.name,
                         decoration: const InputDecoration(
                           labelText: 'Name',
                           border: OutlineInputBorder(
@@ -54,7 +56,7 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                         height: 10,
                       ),
                       TextFormField(
-                        initialValue: 'Male',
+                        initialValue: data.gender,
                         decoration: const InputDecoration(
                           labelText: 'Gender',
                           border: OutlineInputBorder(
@@ -67,7 +69,7 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                       ),
                       TextFormField(
                         // enabled: false,
-                        initialValue: '10',
+                        initialValue: data.experience,
                         decoration: const InputDecoration(
                           labelText: 'Experience',
                           border: OutlineInputBorder(
@@ -79,7 +81,7 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                         height: 10,
                       ),
                       TextFormField(
-                        initialValue: '19-01-2004',
+                        initialValue: data.dateOfJoining,
                         decoration: const InputDecoration(
                           labelText: 'Join date',
                           border: OutlineInputBorder(
@@ -94,7 +96,7 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                       ),
                       TextFormField(
                         enabled: false,
-                        initialValue: '19-01-2025',
+                        initialValue: data.endOfContract,
                         decoration: const InputDecoration(
                           labelText: 'Leave date',
                           border: OutlineInputBorder(
@@ -106,7 +108,7 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                         height: 10,
                       ),
                       TextFormField(
-                        initialValue: '1234567890',
+                        initialValue: data.phoneNumber,
                         decoration: const InputDecoration(
                           labelText: 'Phone Number',
                           border: OutlineInputBorder(
@@ -119,7 +121,8 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                       ),
                       TextFormField(
                         enabled: false,
-                        initialValue: 'Weight Training',
+                        initialValue:
+                            'Weight Training', // add a field named speciality
                         decoration: const InputDecoration(
                           labelText: 'Speciality',
                           border: OutlineInputBorder(
@@ -132,7 +135,8 @@ class _TrainerDetailsScreenState extends State<TrainerDetailsScreen> {
                       ),
                       TextFormField(
                         enabled: false,
-                        initialValue: '50',
+                        initialValue:
+                            '50', // add field number of clients in data base
                         decoration: const InputDecoration(
                           labelText: 'Number of Clients',
                           border: OutlineInputBorder(
