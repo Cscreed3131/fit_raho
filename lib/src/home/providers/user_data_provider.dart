@@ -14,13 +14,11 @@ final userDataProvider =
   if (clientsDoc.exists) {
     return Client.formEntity(ClientEntity.fromDocument(clientsDoc.data()!));
   }
-
   final ownersDoc =
       await FirebaseFirestore.instance.collection('owners').doc(userId).get();
   if (ownersDoc.exists) {
     return Owner.fromEntity(OwnerEntity.fromDocument(ownersDoc.data()!));
   }
-
   final trainersDoc =
       await FirebaseFirestore.instance.collection('trainers').doc(userId).get();
   if (trainersDoc.exists) {

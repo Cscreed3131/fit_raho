@@ -37,7 +37,7 @@ class TrainerSignUp {
   Future<void> setUserData(Trainer trainer) async {
     try {
       await FirebaseFirestore.instance
-          .collection('trainer')
+          .collection('trainers')
           .doc(trainer.trainerId)
           .set(trainer.toEntity().toDocument());
     } catch (e) {

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:fit_raho/components/my_text_field.dart';
 import 'package:fit_raho/models/owner/owner_model.dart';
 import 'package:fit_raho/src/auth/provider/signup_providers/owner_signup_provider.dart';
-import 'package:fit_raho/widgets/userImagePicker.dart';
+import 'package:fit_raho/widgets/user_image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

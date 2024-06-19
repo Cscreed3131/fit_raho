@@ -9,7 +9,7 @@ class Trainer {
   String email;
   String experience;
   String dateOfJoining;
-  String endOfcontract;
+  String endOfContract; // corrected
   String workingHours;
   String imageUrl;
   String role;
@@ -23,7 +23,7 @@ class Trainer {
     required this.email,
     required this.experience,
     required this.dateOfJoining,
-    required this.endOfcontract,
+    required this.endOfContract, // corrected
     required this.workingHours,
     required this.imageUrl,
     required this.role,
@@ -38,11 +38,12 @@ class Trainer {
     email: '',
     experience: '',
     dateOfJoining: '',
-    endOfcontract: '',
+    endOfContract: '', // corrected
     workingHours: '',
     imageUrl: '',
     role: '',
   );
+
   TrainerEntity toEntity() {
     return TrainerEntity(
       trainerId: trainerId,
@@ -53,7 +54,7 @@ class Trainer {
       email: email,
       experience: experience,
       dateOfJoining: dateOfJoining,
-      endOfcontract: endOfcontract,
+      endOfContract: endOfContract, // corrected
       workingHours: workingHours,
       imageUrl: imageUrl,
       role: role,
@@ -70,7 +71,7 @@ class Trainer {
       email: entity.email,
       experience: entity.experience,
       dateOfJoining: entity.dateOfJoining,
-      endOfcontract: entity.endOfcontract,
+      endOfContract: entity.endOfContract, // corrected
       workingHours: entity.workingHours,
       imageUrl: entity.imageUrl,
       role: entity.role,
@@ -79,6 +80,6 @@ class Trainer {
 
   @override
   String toString() {
-    return 'Trainer: $trainerId,$name,$phoneNumber,$gender,$dateOfBirth,$email,$experience,$dateOfJoining,$endOfcontract,$workingHours,$imageUrl,$role';
+    return 'Trainer: $trainerId,$name,$phoneNumber,$gender,$dateOfBirth,$email,$experience,$dateOfJoining,$endOfContract,$workingHours,$imageUrl,$role'; // corrected
   }
 }

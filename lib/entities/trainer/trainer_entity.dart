@@ -7,7 +7,7 @@ class TrainerEntity {
   String email;
   String experience;
   String dateOfJoining;
-  String endOfcontract;
+  String endOfContract; // corrected
   String workingHours;
   String imageUrl;
   String role;
@@ -21,11 +21,12 @@ class TrainerEntity {
     required this.email,
     required this.experience,
     required this.dateOfJoining,
-    required this.endOfcontract,
+    required this.endOfContract, // corrected
     required this.workingHours,
     required this.imageUrl,
     required this.role,
   });
+
   Map<String, Object?> toDocument() {
     return {
       'trainerId': trainerId,
@@ -35,8 +36,8 @@ class TrainerEntity {
       'dateOfBirth': dateOfBirth,
       'email': email,
       'experience': experience,
-      'dateOfJoinging': dateOfJoining,
-      'endOfContract': endOfcontract,
+      'dateOfJoining': dateOfJoining,
+      'endOfContract': endOfContract, // corrected
       'workingHours': workingHours,
       'imageUrl': imageUrl,
       'role': role,
@@ -53,7 +54,7 @@ class TrainerEntity {
       email: doc['email'],
       experience: doc['experience'],
       dateOfJoining: doc['dateOfJoining'],
-      endOfcontract: doc['endOfcontract'],
+      endOfContract: doc['endOfContract'], // corrected
       workingHours: doc['workingHours'],
       imageUrl: doc['imageUrl'],
       role: doc['role'],

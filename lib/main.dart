@@ -2,7 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_raho/routes.dart';
 import 'package:fit_raho/src/auth/screens/signin_screen.dart';
-import 'package:fit_raho/src/home/screens/client_screen/main_home_screen.dart';
+import 'package:fit_raho/src/home/widgets/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -78,13 +78,12 @@ class MyApp extends ConsumerWidget {
         ),
         useMaterial3: true,
       ),
-      // home:const LoginScreen(),
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // Get the user data
-            return const MainHomeScreen();
+            return const HomeScreen();
           }
           return const LoginScreen();
         },

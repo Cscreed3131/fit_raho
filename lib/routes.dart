@@ -1,6 +1,8 @@
 import 'package:fit_raho/src/auth/screens/signup_screens/owner_signup_screen.dart';
 import 'package:fit_raho/src/auth/screens/signup_screens/trainer_signup_screen.dart';
 import 'package:fit_raho/src/home/screens/client_screen/client_home_screen.dart';
+import 'package:fit_raho/src/home/screens/owner_screen/owner_home_screen.dart';
+import 'package:fit_raho/src/home/screens/trainer_screen/trainer_home_screen.dart';
 
 import 'src/auth/screens/signin_screen.dart';
 import 'src/auth/screens/signup_screens/client_signup_screen.dart';
@@ -11,6 +13,8 @@ final routes = {
   TrainerSignUpScreen.routeName: (ctx) => const TrainerSignUpScreen(),
   OwnerSignUpScreen.routeName: (ctx) => const OwnerSignUpScreen(),
   ClientHomeScreen.routeName: (ctx) => const ClientHomeScreen(),
+  OwnerHomeScreen.routeName: (ctx) => const OwnerHomeScreen(),
+  TrainerHomeScreen.routeName: (ctx) => const TrainerHomeScreen(),
 
 //   // HomeScreen.routeName: (ctx) => const HomeScreen(),
 //   // TrainerHomeScreen.routeName: (ctx) => const TrainerHomeScreen(),
