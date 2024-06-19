@@ -56,22 +56,6 @@ class _ProfileDialogBoxState extends ConsumerState<ProfileDialogBox> {
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // if (userRole.contains('administrator'))
-                  ListTile(
-                    onTap: () => {
-                      // Navigator.of(context).pushNamed(AdminScreen.routeName),
-                    },
-                    leading: const Icon(Icons.admin_panel_settings_outlined),
-                    title: const Text('Adminstrator'),
-                  ),
-                  ListTile(
-                    onTap: () => {
-                      // Navigator.of(context)
-                      //     .popAndPushNamed(OrderHistoryScreen.routeName),
-                    },
-                    leading: const Icon(Icons.history_rounded),
-                    title: const Text('Order history'),
-                  ),
                   ListTile(
                     onTap: () => {
                       // Navigator.of(context)
